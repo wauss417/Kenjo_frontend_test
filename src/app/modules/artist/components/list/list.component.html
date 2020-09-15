@@ -31,14 +31,6 @@
   </button>
 </div>
 
-<!-- Modified Message -->
-<div *ngIf="modified" class="alert alert-info alert-dismissible fade show" role="alert">
-  <strong>Artist(s) Modified!</strong>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-
 <!-- No artist message -->
 <div *ngIf="!loading && artists.length === 0">
   <p>There is no artists, you can add a new artist: </p>
@@ -72,7 +64,7 @@
       <div [id]=" 'collapse_' + i " class="collapse" [attr.araia-labelledby]=" 'heading_' + i "
         data-parent="#accordion">
         <div class="card-body">
-          <button class="btn btn-info" [routerLink]="['/artist/modify']" [queryParams]="{id: item._id}">Modify</button>
+          <button class="btn btn-info" [routerLink]="['/artist/show']" [queryParams]="{id: item._id}">Show</button>
           <button class="btn btn-danger float-right" (click)="open(item._id)">Delete</button>
         </div>
       </div>
