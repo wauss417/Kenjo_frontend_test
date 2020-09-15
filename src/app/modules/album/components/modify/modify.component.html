@@ -1,0 +1,60 @@
+<!-- Page Title -->
+<h3><b>Modify</b></h3>
+
+<!-- Error Message -->
+<div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Error at updating data!</strong> {{ errorMessage}}.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+<form *ngIf="album" #albumForm="ngForm" (ngSubmit)="confirm()">
+
+  <!-- Input Name -->
+  <div class="mb-2">
+    <label for="title" class="font-weight-bold-600">Album Title* :</label>
+    <input name="title" id="title" type="text" placeholder="Title" class="form-control"
+      [(ngModel)]="album.title" required>
+  </div>
+
+  <!-- Input coverUrl -->
+  <div class="mb-2">
+    <label for="coverUrl" class="font-weight-bold-600">Cover Url: </label>
+    <input name="coverUrl" id="coverUrl" type="text" placeholder="URL:" class="form-control"
+      [(ngModel)]="album.coverUrl">
+  </div>
+
+  <!-- Input artistId -->
+  <div class="mb-2">
+    <label for="artistId" class="font-weight-bold-600">Artist: </label>
+    <select name="artistId" id="artistId" type="text" placeholder="URL:" class="form-control"
+      [(ngModel)]="album.artistId">
+      <option disabled hidden value="">Select Artist</option>
+      <option [value]="option._id" *ngFor="let option of artists">{{option.name}}</option>
+    </select>
+  </div>
+
+  <!-- Input year -->
+  <div class="mb-2">
+    <label for="year" class="font-weight-bold-600">Published year: </label>
+    <select name="year" id="year" type="text" placeholder="URL:" class="form-control"
+      [(ngModel)]="album.year">
+      <option disabled hidden value="">Select Year</option>
+      <option [value]=" i + 1909" *ngFor="let item of [].constructor(122); let i = index">{{ i + 1909}}</option>
+    </select>
+  </div>
+
+  <!-- Input genre -->
+  <div class="mb-2">
+    <label for="genre" class="font-weight-bold-600">Genre: </label>
+    <input name="genre" id="genre" type="text" placeholder="Genre" class="form-control"
+      [(ngModel)]="album.genre">
+  </div>
+
+  <!-- Submit -->
+  <button class="btn btn-secondary" type="submit" [routerLink]="['/album']">Cancel</button>
+  <button class="btn btn-info float-right" type="submit" [disabled]="!albumForm.valid">Modify</button>
+
+</form>
