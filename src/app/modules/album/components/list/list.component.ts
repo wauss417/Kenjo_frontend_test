@@ -50,6 +50,13 @@ export class ListComponent implements OnInit, OnDestroy {
    * @description Funcion para obtener los albums desde la API.
    */
 
+   /**
+    * Comentario: lo ideal aquí sería ver si usando alguna operacion XRJS
+    * podemos pillar los datos de los albums y artistas que concatene sus valores
+    * por medio de un stream de datos y además conpaginarlos
+    * Lo intenté implementar pero aún me es muy complicado.
+    */
+
   loadAlbums() {
     this.loading = true;
 
