@@ -1,0 +1,81 @@
+<!-- Page Title -->
+<h3><b>Modify</b></h3>
+
+<!-- Error Message -->
+<div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Error at updating data!</strong> {{ errorMessage}}.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+<form *ngIf="artist" #artistForm="ngForm" (ngSubmit)="confirm()">
+
+  <!-- Input Name -->
+  <div class="mb-2">
+    <label for="name" class="font-weight-bold-600">Name* :</label>
+    <input name="name" id="name" type="text" placeholder="Nombre" class="form-control" [(ngModel)]="artist.name"
+      required>
+  </div>
+
+
+  <!-- Input photoUrl -->
+  <div class="mb-2">
+    <label for="photoUrl" class="font-weight-bold-600">Photo Url: </label>
+    <input name="photoUrl" id="photoUrl" type="text" placeholder="URL:" class="form-control"
+      [(ngModel)]="artist.photoUrl">
+  </div>
+
+
+  <!-- Input birthdate -->
+  <div class="mb-2">
+
+    <label for="birthdate" class="font-weight-bold-600">Birthdate: </label>
+
+    <!-- Datepicker -->
+    <div class="input-group">
+      <input class="form-control" placeholder="yyyy-mm-dd" name="birthdate" [(ngModel)]="birthdate" ngbDatepicker
+        #dBirth="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary calendar" (click)="dBirth.toggle()" type="button"></button>
+      </div>
+    </div>
+
+    <!-- Help text -->
+    <p class="font-12 mb-1">
+      <em>
+        year when the artist was born or the band was created.
+      </em>
+    </p>
+
+  </div>
+
+
+  <!-- Input deathDate -->
+  <div class="mb-4">
+
+    <label for="deathDate" class="font-weight-bold-600">Death Date: </label>
+
+    <!-- Datepicker -->
+    <div class="input-group">
+      <input class="form-control" placeholder="yyyy-mm-dd" name="deathDate" [(ngModel)]="deathDate" ngbDatepicker
+        #dDeath="ngbDatepicker">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary calendar" (click)="dDeath.toggle()" type="button"></button>
+      </div>
+    </div>
+
+    <!-- Helptext -->
+    <p class="font-12 mb-1">
+      <em>
+        year when the artist died or the band split up
+      </em>
+    </p>
+  </div>
+
+  <!-- Submit -->
+  <button class="btn btn-secondary" type="submit" [disabled]="!artistForm.valid" [routerLink]="['/artist']">Cancel</button>
+  <button class="btn btn-info float-right" type="submit" [disabled]="!artistForm.valid">Modify</button>
+
+</form>
