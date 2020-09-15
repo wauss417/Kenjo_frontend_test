@@ -89,7 +89,7 @@ export class CreateComponent implements OnInit, OnDestroy {
         res => {
           this.error = false;
           this.created = true;
-          this._router.navigate(['/artist'], { state: { modified: false, created: true } });
+          this._router.navigate(['/artist'], { state: { created: true } });
         },
         err => {
           this.error = true;
