@@ -75,7 +75,8 @@
   </div>
 
   <!-- Submit -->
-  <button class="btn btn-secondary" type="submit" [disabled]="!artistForm.valid" [routerLink]="['/artist']">Cancel</button>
+  <button class="btn btn-secondary" type="submit" [disabled]="!artistForm.valid" [routerLink]="['/artist/show']"
+    [queryParams]="{id: artist._id}">Cancel</button>
   <button class="btn btn-info float-right" type="submit" [disabled]="!artistForm.valid">Modify</button>
 
 </form>
