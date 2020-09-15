@@ -19,7 +19,6 @@ export class ListComponent implements OnInit, OnDestroy {
   error: boolean;
   errorMessage: String;
   deleted: boolean;
-  modified: boolean;
   created: boolean;
 
   //Subscriptions
@@ -41,7 +40,6 @@ export class ListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     //Obtener datos de navegación si se han dado
-    this.modified = history.state.modified;
     this.created = history.state.created;
     //Obtener albums
     this.loadAlbums();

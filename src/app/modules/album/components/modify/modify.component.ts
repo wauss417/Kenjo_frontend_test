@@ -24,7 +24,7 @@ export class ModifyComponent implements OnInit, OnDestroy {
   private _subscriptions: Subscription = new Subscription();
 
   //Form values
-  albumID: String;
+  albumId: String;
   album: Album;
   artists: Artist[];
 
@@ -35,7 +35,7 @@ export class ModifyComponent implements OnInit, OnDestroy {
   ) {
     //Obtener valor del ID por query param
     this._activeRoute.queryParams.subscribe(params => {
-      this.albumID = params['id'];
+      this.albumId = params['id'];
     });
   }
 
@@ -48,7 +48,7 @@ export class ModifyComponent implements OnInit, OnDestroy {
     this.loadArtist();
     this.loading = true;
     this._subscriptions.add(
-      this._backendService.getAlbum(this.albumID).subscribe(
+      this._backendService.getAlbum(this.albumId).subscribe(
         res => {
           this.error = false;
           this.album = res;
@@ -104,7 +104,7 @@ export class ModifyComponent implements OnInit, OnDestroy {
       this._backendService.putAlbum(this.album._id, data).subscribe(
         res => {
           this.error = false;
-          this._router.navigateByUrl('/album', { state: { modified: true, created: false } });
+          this._router.navigate(['/album/show'], { state: { modified: true }, queryParams: { id: this.albumId } });
         },
         err => {
           this.error = true;

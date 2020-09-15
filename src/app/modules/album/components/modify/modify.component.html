@@ -54,7 +54,7 @@
   </div>
 
   <!-- Submit -->
-  <button class="btn btn-secondary" type="submit" [routerLink]="['/album']">Cancel</button>
+  <button class="btn btn-secondary"[routerLink]="['/album/show']" [queryParams]="{id: album._id}">Cancel</button>
   <button class="btn btn-info float-right" type="submit" [disabled]="!albumForm.valid">Modify</button>
 
 </form>
