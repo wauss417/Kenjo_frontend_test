@@ -1,0 +1,57 @@
+<!-- Page Title -->
+<h3><b>View</b></h3>
+
+<!-- Modified Message -->
+<div *ngIf="modified" class="alert alert-info alert-dismissible fade show" role="alert">
+  <strong>Album(s) Modified!</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<!-- Input Name -->
+<div *ngIf="album">
+
+  <img [src]="album.coverUrl || 'assets/images/noAlbumImage.jpg'" [alt]=" album.title + ' album picture'" width="100"
+  height="100">
+
+  <!-- Input Name -->
+  <div class="mb-2">
+    <label for="title" class="font-weight-bold-600">Album Title* :</label>
+    <input name="title" id="title" type="text" placeholder="Title" class="form-control"
+      [value]="album.title" required readonly>
+  </div>
+
+  <!-- Input coverUrl -->
+  <div class="mb-2">
+    <label for="coverUrl" class="font-weight-bold-600">Cover Url: </label>
+    <input name="coverUrl" id="coverUrl" type="text" placeholder="URL:" class="form-control"
+      [value]="album.coverUrl" readonly>
+  </div>
+
+  <!-- Input artistId -->
+  <div class="mb-2">
+    <label for="artistId" class="font-weight-bold-600">Artist: </label>
+    <input name="artistId" id="artistId" type="text" placeholder="URL:" class="form-control"
+    [value]="artist.name" readonly>
+  </div>
+
+  <!-- Input year -->
+  <div class="mb-2">
+    <label for="year" class="font-weight-bold-600">Published year: </label>
+    <input name="year" id="year" type="text" placeholder="URL:" class="form-control"
+    [value]="album.year" readonly>
+  </div>
+
+  <!-- Input genre -->
+  <div class="mb-2">
+    <label for="genre" class="font-weight-bold-600">Genre: </label>
+    <input name="genre" id="genre" type="text" placeholder="Genre" class="form-control"
+      [value]="album.genre" readonly>
+  </div>
+
+  <!-- Submit -->
+  <button class="btn btn-secondary" [routerLink]="['/album']">Cancel</button>
+  <button class="btn btn-info float-right" [routerLink]="['/album/modify']" [queryParams]="{id: album._id}">Modify</button>
+
+</div>
