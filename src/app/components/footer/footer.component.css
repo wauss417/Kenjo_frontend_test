@@ -4,15 +4,6 @@
   box-sizing: inherit;
 }
 
-img {
-  border-style: none;
-  max-width: 100%;
-}
-
-a {
-  background-color: transparent;
-}
-
 #footer {
   padding-top: 40px;
   padding-bottom: 50px;
@@ -23,7 +14,6 @@ a {
   font-family: "Open Sans";
   font-size: 14px;
   text-align: left;
-  color: #ffffff;
   font-weight: 400;
   line-height: 1.5;
 }
@@ -32,33 +22,7 @@ a {
   align-self: flex-end;
 }
 
-.menufooter {
-  display: inline-block;
-  vertical-align: bottom;
-  margin-left: 35px;
-}
-
-.menufooter a {
-  font-family: 'Open Sans';
-  font-size: 13px;
-  text-align: left;
-  color: #078e38;
-  text-decoration: underline;
-  margin-right: 10px;
-}
-
-.enlacelogofooter {
-  display: inline-block;
-}
-
 .contenedor {
   max-width: 1110px;
   margin: 0px auto;
-}
-.spanfooter {
-  color: #5d5d5d;
-  font-size: 12px;
-  line-height: 14px;
-  text-align: left;
-  display: block;
 }
