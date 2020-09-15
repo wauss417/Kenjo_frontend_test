@@ -11,6 +11,7 @@ import {
   CreateComponent,
   ModifyComponent,
   DeleteComponent,
+  ShowComponent
 } from './';
 
 @NgModule({
@@ -19,7 +20,8 @@ import {
     ListComponent,
     CreateComponent,
     ModifyComponent,
-    DeleteComponent
+    DeleteComponent,
+    ShowComponent
   ],
   imports: [
     CommonModule,

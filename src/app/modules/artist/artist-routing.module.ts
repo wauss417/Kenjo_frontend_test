@@ -6,7 +6,8 @@ import {
   ArtistComponent,
   ListComponent,
   CreateComponent,
-  ModifyComponent
+  ModifyComponent,
+  ShowComponent
 } from './';
 
 const artistRoutes: Routes = [
@@ -17,7 +18,12 @@ const artistRoutes: Routes = [
       {
         path: '',
         component: ListComponent,
-        data: {'modified': false, 'created': false}
+        data: {'created': false}
+      },
+      {
+        path: 'show',
+        component: ShowComponent,
+        data: {'modified': false}
       },
       {
         path: 'create',
