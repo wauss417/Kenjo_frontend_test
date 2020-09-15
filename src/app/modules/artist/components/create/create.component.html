@@ -1,0 +1,93 @@
+<!-- Page Title -->
+<h3><b>Create</b></h3>
+
+<!-- Error message -->
+<div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Error at creating data!</strong> {{ errorMessage }}.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<!-- BEGIN: create artist form -->
+<form #createForm="ngForm">
+
+  <!-- BEGIN: multiple create form -->
+  <div *ngFor="let item of albums; index as i" class="createForm">
+
+    <!-- Input Name -->
+    <div class="mb-2">
+      <label [for]=" 'name_' + i " class="font-weight-bold-600">Name* :</label>
+      <input [name]=" 'name_' +i " [id]=" 'name_' + i " type="text" placeholder="Name" class="form-control"
+        [(ngModel)]="albums[i].name" required>
+    </div>
+
+
+    <!-- Input photoUrl -->
+    <div class="mb-2">
+      <label [for]=" 'photoUrl_' + i " class="font-weight-bold-600">Photo Url: </label>
+      <input [name]=" 'photoUrl_' + i " [id]=" 'photoUrl_' + i " type="text" placeholder="URL:" class="form-control"
+        [(ngModel)]="albums[i].photoUrl">
+    </div>
+
+
+    <!-- Input birthdate -->
+    <div class="mb-2">
+
+      <label class="font-weight-bold-600">Birthdate: </label>
+
+      <!-- Datepicker -->
+      <div class="input-group">
+        <input class="form-control" placeholder="yyyy-mm-dd" [id]=" 'birthdate_' + i"
+          [ngModelOptions]="{standalone: true}" [(ngModel)]="albums[i].birthdate" ngbDatepicker
+          #dBirth="ngbDatepicker">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="dBirth.toggle()" type="button"></button>
+        </div>
+      </div>
+
+      <!-- Help text -->
+      <p class="font-12 mb-1">
+        <em>
+          year when the artist was born or the band was created.
+        </em>
+      </p>
+
+    </div>
+
+
+    <!-- Input deathDate -->
+    <div class="mb-2">
+
+      <label class="font-weight-bold-600">Death Date: </label>
+
+      <!-- Datepicker -->
+      <div class="input-group">
+        <input class="form-control" placeholder="yyyy-mm-dd" [id]=" 'deathDate' + i"
+          [ngModelOptions]="{standalone: true}" [(ngModel)]="albums[i].deathDate" ngbDatepicker
+          #dDeath="ngbDatepicker">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="dDeath.toggle()" type="button"></button>
+        </div>
+      </div>
+
+      <!-- Helptext -->
+      <p class="font-12 mb-1">
+        <em>
+          year when the artist died or the band split up
+        </em>
+      </p>
+    </div>
+
+  </div>
+  <!-- END: create artist form -->
+
+  <!-- add new form max 5 -->
+  <button class="btn btn-info" (click)="addArtist()">Add artist</button>
+
+  <!-- Submit -->
+  <button class="btn btn-info float-right" type="submit" [disabled]="!createForm.valid"
+    (click)="confirm()">Submit</button>
+
+</form>
+<!-- END: create artist form -->

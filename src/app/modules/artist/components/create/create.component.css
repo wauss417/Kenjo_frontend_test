@@ -1,0 +1,4 @@
+.createForm:not(:first-child) {
+  border-top: 3px solid grey;
+  margin-top: 3rem;
+}
