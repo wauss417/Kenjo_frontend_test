@@ -86,7 +86,6 @@ export class ModifyComponent implements OnInit, OnDestroy {
         res => {
           this.error = false;
           this._router.navigate(['/artist/show'], { state: { modified: true }, queryParams: { id: this.artistId } });
-          // this._router.navigate(['/artist/show/'])
         },
         err => {
           this.error = true;
