@@ -33,7 +33,7 @@
   <div class="mb-2">
     <label for="artistId" class="font-weight-bold-600">Artist: </label>
     <input name="artistId" id="artistId" type="text" placeholder="URL:" class="form-control"
-    [value]="artist.name" readonly>
+    [value]="artist.name || 'no assigned'" readonly>
   </div>
 
   <!-- Input year -->

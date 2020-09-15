@@ -50,7 +50,9 @@ export class ShowComponent implements OnInit, OnDestroy {
         res => {
           this.error = false;
           this.album = res;
-          this.getArtistAlbum();
+          if (this.album.artistId){
+            this.getArtistAlbum();
+          }
         },
         err => {
           this.error = true;
