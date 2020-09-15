@@ -43,7 +43,7 @@ export class CreateComponent implements OnInit, OnDestroy {
     this.loadArtist();
     this.albums.push({
       title: "",
-      artistId: "",
+      artistId: null,
       coverUrl: "",
       year: null,
       genre: "",
@@ -86,7 +86,7 @@ export class CreateComponent implements OnInit, OnDestroy {
     if (this.albums.length < this.maxAlbum) {
       this.albums.push({
         title: "",
-        artistId: "",
+        artistId: null,
         coverUrl: "",
         year: null,
         genre: "",
