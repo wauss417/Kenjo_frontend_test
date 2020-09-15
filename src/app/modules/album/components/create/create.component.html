@@ -1,0 +1,70 @@
+<!-- Page Title -->
+<h3><b>Create</b></h3>
+
+<!-- Error message -->
+<div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Error at creating data!</strong> {{ errorMessage }}.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<!-- BEGIN: create artist form -->
+<form #createForm="ngForm">
+
+  <!-- BEGIN: multiple create form -->
+  <div *ngFor="let item of albums; index as i" class="createForm">
+
+    <!-- Input Name -->
+    <div class="mb-2">
+      <label [for]=" 'title_' + i " class="font-weight-bold-600">Album Title* :</label>
+      <input [name]=" 'title_' +i " [id]=" 'title_' + i " type="text" placeholder="Title" class="form-control"
+        [(ngModel)]="albums[i].title" required>
+    </div>
+
+    <!-- Input coverUrl -->
+    <div class="mb-2">
+      <label [for]=" 'coverUrl_' + i " class="font-weight-bold-600">Cover Url: </label>
+      <input [name]=" 'coverUrl_' + i " [id]=" 'coverUrl_' + i " type="text" placeholder="URL:" class="form-control"
+        [(ngModel)]="albums[i].coverUrl">
+    </div>
+
+    <!-- Input artistId -->
+    <div class="mb-2">
+      <label [for]=" 'artistId' + i " class="font-weight-bold-600">Artist: </label>
+      <select [name]=" 'artistId' + i " [id]=" 'artistId' + i " type="text" placeholder="URL:" class="form-control"
+        [(ngModel)]="albums[i].artistId">
+        <option disabled hidden value="">Select Artist</option>
+        <option [value]="option._id" *ngFor="let option of artists">{{option.name}}</option>
+      </select>
+    </div>
+
+    <!-- Input Year -->
+    <div class="mb-2">
+      <label [for]=" 'year' + i " class="font-weight-bold-600">Publiseh year: </label>
+      <select [name]=" 'year' + i " [id]=" 'year' + i " type="text" placeholder="URL:" class="form-control"
+        [(ngModel)]="albums[i].year">
+        <option disabled hidden value="">Select Year</option>
+        <option [value]=" i + 1909" *ngFor="let item of [].constructor(122); let i = index">{{ i + 1909}}</option>
+      </select>
+    </div>
+
+    <!-- Input genre -->
+    <div class="mb-2">
+      <label [for]=" 'genre_' + i " class="font-weight-bold-600">Genre: </label>
+      <input [name]=" 'genre_' + i " [id]=" 'genre_' + i " type="text" placeholder="Genre" class="form-control"
+        [(ngModel)]="albums[i].genre">
+    </div>
+
+  </div>
+  <!-- END: create artist form -->
+
+  <!-- add new form max 3 -->
+  <button class="btn btn-info" (click)="addAlbum()">Add album</button>
+
+  <!-- Submit -->
+  <button class="btn btn-info float-right" type="submit" [disabled]="!createForm.valid"
+    (click)="confirm()">Submit</button>
+
+</form>
+<!-- END: create artist form -->
