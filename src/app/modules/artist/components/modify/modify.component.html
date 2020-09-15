@@ -36,7 +36,7 @@
     <!-- Datepicker -->
     <div class="input-group">
       <input class="form-control" placeholder="yyyy-mm-dd" name="birthdate" [(ngModel)]="birthdate" ngbDatepicker
-        #dBirth="ngbDatepicker">
+        #dBirth="ngbDatepicker" [minDate]="{year: 1900, month: 1, day: 1}">
       <div class="input-group-append">
         <button class="btn btn-outline-secondary calendar" (click)="dBirth.toggle()" type="button"></button>
       </div>
@@ -60,7 +60,7 @@
     <!-- Datepicker -->
     <div class="input-group">
       <input class="form-control" placeholder="yyyy-mm-dd" name="deathDate" [(ngModel)]="deathDate" ngbDatepicker
-        #dDeath="ngbDatepicker">
+        #dDeath="ngbDatepicker" [minDate]="{year: 1900, month: 1, day: 1}">
       <div class="input-group-append">
         <button class="btn btn-outline-secondary calendar" (click)="dDeath.toggle()" type="button"></button>
       </div>
