@@ -1,0 +1,89 @@
+<!-- Page title -->
+<h3><b>List</b></h3>
+
+<!-- Loagind layout -->
+<div *ngIf='loading'>
+  Loading ....
+</div>
+
+<!-- Error message -->
+<div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Error at fetching data!</strong> {{ errorMessage }}.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+<!-- Delete Message -->
+<div *ngIf="deleted" class="alert alert-info alert-dismissible fade show" role="alert">
+  <strong>Album deleted!</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<!-- Created Message -->
+<div *ngIf="created" class="alert alert-info alert-dismissible fade show" role="alert">
+  <strong>Album(s) Created!</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<!-- Modified Message -->
+<div *ngIf="modified" class="alert alert-info alert-dismissible fade show" role="alert">
+  <strong>Album(s) Modified!</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<!-- No artist message -->
+<div *ngIf="!loading && albums.length === 0">
+  <p>There is no albums, you can add a new artist: </p>
+  <button class="btn btn-info float-right" [routerLink]="['/album/create']">Create</button>
+</div>
+
+<!-- BEGIN: Albums display  -->
+<div *ngIf="!loading && albums.length !== 0">
+
+  <!-- BEGIN: Album Accordeon -->
+  <div id="accordion">
+
+    <!-- BEGIN: Album box loop -->
+    <div *ngFor="let item of albums; index as i" class="card">
+
+      <!-- Artist data display -->
+      <div class="card-header" [id]=" 'heading_' + i " data-toggle="collapse" [attr.data-target]=" '#collapse_' + i "
+        aria-expanded="false" [attr.araia-controls]=" 'collapse_' + i ">
+
+        <img [src]="item.coverUrl || 'assets/images/noAlbumImage.jpg'" [alt]=" item.name + ' artist picture'"
+          width="100" height="100">
+
+        <h5 class="mb-0 d-inline">
+          {{ item.title }} Artist TODOLink
+          <span *ngIf='item.year'> ({{ item.year }})</span>
+        </h5>
+
+      </div>
+
+      <!-- Artist options -->
+      <div [id]=" 'collapse_' + i " class="collapse" [attr.araia-labelledby]=" 'heading_' + i "
+        data-parent="#accordion">
+        <div class="card-body">
+          <button class="btn btn-info" [routerLink]="['/album/modify']" [queryParams]="{id: item._id}">Modify</button>
+          <button class="btn btn-danger float-right" (click)="open(item._id)">Delete</button>
+        </div>
+      </div>
+
+    </div>
+    <!-- END: Album box loop -->
+
+
+  </div>
+  <!-- END: Album Accordeon -->
+
+
+</div>
+<!-- END: Albums display  -->
